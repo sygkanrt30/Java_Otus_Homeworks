@@ -10,7 +10,10 @@ public class HomeworkAPP {
         int[] ans = reverseARR(universalArr);
         System.out.println(Arrays.toString(ans));
 //-------------------------------------------------
-        boolean res = progressArr(universalArr);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите 1, если нужно проверка на возрастание, или введите 2, если нужна проверка на убывание: ");
+        int typeOfProgress = scanner.nextInt();
+        boolean res = progressArr(universalArr, typeOfProgress);
         System.out.println(res);
 //-------------------------------------------------
         boolean result = findPointInARR(universalArr);
@@ -24,9 +27,10 @@ public class HomeworkAPP {
         int[] biggestArr = new int[0];
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].length > biggestArr.length) {
-                biggestArr = arr[i].clone();
+                biggestArr = arr[i];
             }
         }
+        biggestArr = biggestArr.clone();
         Arrays.fill(biggestArr, 0);
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
@@ -55,20 +59,13 @@ public class HomeworkAPP {
 
     public static int[] reverseARR(int[] arr) {
         int[] arr1 = new int[arr.length];
-        int i = 0;
-        int j = arr.length - 1;
-        while (j >= 0) {
-            arr1[i] = arr[j];
-            i++;
-            j--;
+        for (int i = 0; i < arr.length; i++) {
+            arr1[i] = arr[arr.length - i - 1];
         }
         return arr1;
     }
 
-    public static boolean progressArr(int[] arr) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите 1, если нужно проверка на возрастание, или введите 2, если нужна проверка на убывание: ");
-        int typeOfProgress = scanner.nextInt();
+    public static boolean progressArr(int[] arr, int typeOfProgress) {
         if (typeOfProgress == 1) {
             for (int i = 0; i < arr.length - 1; i++) {
                 if (arr[i] >= arr[i + 1]) {
