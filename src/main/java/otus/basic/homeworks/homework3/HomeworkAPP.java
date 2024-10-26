@@ -34,7 +34,7 @@ public class HomeworkAPP {
     }
 
     public static int findMax(int[][] array) {
-        int max = 0;
+        int max = -1000000000;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] > max) {
@@ -60,11 +60,9 @@ public class HomeworkAPP {
     public static void printSquare(int size) {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (j == size - 1) {
-                    System.out.print("*  \n");
-                } else
-                    System.out.print("*  ");
+                System.out.print("*  ");
             }
+            System.out.println();
         }
     }
 
