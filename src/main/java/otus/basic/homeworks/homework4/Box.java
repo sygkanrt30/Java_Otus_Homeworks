@@ -54,32 +54,26 @@ public class Box {
     public void takeItemOutBox() {
         if (isOpened) {
             if (item != null) {
-                System.out.println("Предмет " + item + " вытащен из коробки");
-                System.out.println();
+                System.out.println("Предмет " + item + " вытащен из коробки\n");
                 item = null;
             } else {
-                System.out.println("В коробке нет предметов!");
-                System.out.println();
+                System.out.println("В коробке нет предметов!\n");
             }
         } else {
-            System.out.println("Коробку нужно открыть!");
-            System.out.println();
+            System.out.println("Коробку нужно открыть!\n");
         }
     }
 
     public void putItemInBox(String newItem) {
-        if (isOpened) {
-            if (item != null) {
-                System.out.println("В коробке уже есть предмет " + item + ", сначала его нужно вытащить!");
-                System.out.println();
-            } else {
-                item = newItem;
-                System.out.println("Предмет " + newItem + " лежит в коробке");
-                System.out.println();
-            }
-        } else {
-            System.out.println("Коробку нужно открыть!");
-            System.out.println();
+        if (!isOpened) {
+            System.out.println("Коробку нужно открыть!\n");
+            return;
         }
+        if (item != null) {
+            System.out.println("В коробке уже есть предмет " + item + ", сначала его нужно вытащить!\n");
+            return;
+        }
+        item = newItem;
+        System.out.println("Предмет " + newItem + " лежит в коробке\n");
     }
 }
