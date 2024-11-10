@@ -6,7 +6,7 @@ public abstract class Animals {
     protected final int speedSwim;
     protected int endurance;
     protected boolean isTired;
-
+    protected short k;
     public Animals(String name, int speedRun, int speedSwim, int endurance) {
         this.name = name;
         this.speedRun = speedRun;
@@ -34,5 +34,13 @@ public abstract class Animals {
         }
     }
 
-    public abstract int swim(int distance);
+    public int swim(int distance) {
+        endurance -= distance * k;
+        if (endurance <= 0) {
+            isTired = true;
+            return -1;
+        } else {
+            return distance / speedSwim;
+        }
+    }
 }

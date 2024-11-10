@@ -5,6 +5,7 @@ public class Cat extends Animals {
 
     public Cat(String name, int speedRun, int speedSwim, int endurance) {
         super(name, speedRun, speedSwim, endurance);
+        k = 0;
     }
 
     @Override
