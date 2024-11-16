@@ -32,7 +32,11 @@ public class Plate {
     }
 
     public boolean removeFood(int quantityFood) {
-        return currentQuantityFood - quantityFood >= 0;
+        if (currentQuantityFood >= quantityFood) {
+            currentQuantityFood -= quantityFood;
+            return true;
+        }
+        return false;
     }
 
 }
