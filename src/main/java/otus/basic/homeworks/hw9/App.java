@@ -17,16 +17,16 @@ public class App {
     }
 
     public static Worker youngestWorker(ArrayList<Worker> arr) {
-        ArrayList<Worker> workers = new ArrayList<>();
+        Worker youngestWorker = null;
         int min = Integer.MAX_VALUE;
         for (Worker worker : arr) {
             int a = worker.getAge();
             if (a < min) {
-                workers.add(worker);
+                youngestWorker = worker;
                 min = a;
             }
         }
-        return workers.get(workers.size() - 1);
+        return youngestWorker;
     }
 
     public static boolean isUpAverageAge(ArrayList<Worker> arr, int minAverageAge) {
@@ -37,14 +37,14 @@ public class App {
         return (sum / arr.size()) > minAverageAge;
     }
 
-    public static ArrayList<Integer> filterByAge(ArrayList<Worker> arr, int minAge) {
-        ArrayList<Integer> ages = new ArrayList<>();
+    public static ArrayList<Worker> filterByAge(ArrayList<Worker> arr, int minAge) {
+        ArrayList<Worker> workers = new ArrayList<>();
         for (Worker worker : arr) {
             if (worker.getAge() >= minAge) {
-                ages.add(worker.getAge());
+                workers.add(worker);
             }
         }
-        return ages;
+        return workers;
     }
 
     public static ArrayList<String> getNames(ArrayList<Worker> arr) {
