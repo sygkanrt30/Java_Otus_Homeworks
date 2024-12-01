@@ -13,14 +13,9 @@ public class PhoneBook {
     }
 
     public void find(String name) {
-        int k = 0;
-        for (Map.Entry<String, HashSet<String>> entry : phoneBook.entrySet()) {
-            if (entry.getKey().equals(name)) {
-                System.out.println(entry.getValue());
-                k++;
-            }
-        }
-        if (k == 0) {
+        if (phoneBook.containsKey(name)) {
+            System.out.println(phoneBook.get(name));
+        } else {
             System.out.println("There are no registered numbers for this name");
         }
     }
