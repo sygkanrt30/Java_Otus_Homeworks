@@ -36,14 +36,14 @@ public class App {
         Person person = personDataBase.findById(122143L);
         System.out.println(personDataBase.isManager(person));
         System.out.println(personDataBase.isEmployee(person));
-//------------------------------------------------------------------
+        System.out.println("Первое задание закончилось");
         int[] array = {1, 4, 5, 56, 8, 7, 6, 5, 4, 35, 67, 56, 2};
         Sort.bubbleSort(array);
         System.out.println(Arrays.toString(array));
         array = new int[]{1, 4, 5, 56, 8, 7, 6, 5, 4, 35, 67, 56, 2};
         Sort.quickSort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
-//------------------------------------------------------------------
+        System.out.println("Второе задание закончилось");
         ArrayList<Integer> arr = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 8, 9, 45, 67, 88, 89, 90, 99, 100));
         BinaryTreeSearch binaryTreeSearch = new BinaryTreeSearch(arr);
         TreeNode tree = binaryTreeSearch.sortedListToBinaryTreeSearch();

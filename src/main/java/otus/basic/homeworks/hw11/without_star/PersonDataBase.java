@@ -2,6 +2,7 @@ package otus.basic.homeworks.hw11.without_star;
 
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class PersonDataBase {
     private final HashMap<Long, Person> mapOfPerson = new HashMap<>();
@@ -20,8 +21,12 @@ public class PersonDataBase {
 
     public boolean isManager(Person person) {
         Position position = mapOfPerson.get(person.getId()).getPosition();
-        return position.equals(Position.DIRECTOR) || position.equals(Position.MANAGER) ||
-                position.equals(Position.SENIOR_MANAGER) || position.equals(Position.BRANCH_DIRECTOR);
+        HashSet<Position> positions = new HashSet<>();
+        positions.add(Position.MANAGER);
+        positions.add(Position.SENIOR_MANAGER);
+        positions.add(Position.DIRECTOR);
+        positions.add(Position.BRANCH_DIRECTOR);
+        return positions.contains(position);
     }
 
     public boolean isEmployee(Person person) {
