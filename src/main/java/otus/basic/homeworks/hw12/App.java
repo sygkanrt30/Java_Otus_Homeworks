@@ -6,9 +6,21 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class App {
+    public static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String[] listOfFile = {"file_1", "file_2", "list_of_fruits"};
+        String[] listOfFile = getListNameFile();
+        readInfo(listOfFile);
+        writeInfo();
+    }
+
+    public static String[] getListNameFile() {
+        File file = new File("C:\\Users\\slava\\Coding\\IdeaProjects\\Java_homeworks\\");
+        FilenameFilter filter = (dir, name) -> name.endsWith("txt");
+        return file.list(filter);
+    }
+
+    public static void readInfo(String[] listOfFile) {
         System.out.println("Please, write the name of the file whose contents you want to read:");
         String fileInName = scanner.nextLine();
         for (String s : listOfFile) {
@@ -26,6 +38,9 @@ public class App {
                 }
             }
         }
+    }
+
+    public static void writeInfo() {
         System.out.println("Please, write the name of the file for recording information:");
         String fileOutName = scanner.nextLine();
         System.out.println("Please, write content to be recorded:");
