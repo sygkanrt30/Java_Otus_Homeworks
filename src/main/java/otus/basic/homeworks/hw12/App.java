@@ -3,6 +3,7 @@ package otus.basic.homeworks.hw12;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
@@ -15,13 +16,16 @@ public class App {
     }
 
     public static String[] getListNameFile() {
-        File file = new File("C:\\Users\\slava\\Coding\\IdeaProjects\\Java_homeworks\\");
+        File file = new File("files");
         FilenameFilter filter = (dir, name) -> name.endsWith("txt");
         return file.list(filter);
     }
 
     public static void readInfo(String[] listOfFile) {
         System.out.println("Please, write the name of the file whose contents you want to read:");
+        for (String file : listOfFile) {
+            System.out.println(file);
+        }
         String fileInName = scanner.nextLine();
         for (String s : listOfFile) {
             if (fileInName.equals(s)) {
