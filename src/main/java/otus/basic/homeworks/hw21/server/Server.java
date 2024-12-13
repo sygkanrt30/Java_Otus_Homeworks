@@ -1,6 +1,5 @@
 package otus.basic.homeworks.hw21.server;
 
-import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -30,7 +29,14 @@ public class Server {
             clientHandlers.add(clientHandler);
             String userInput = inputStream.readUTF();
             if (userInput.equals("start")) {
-                outputStream.writeUTF("Server calculator\nAvailable operations:\n+\n-\n*\n/\nsqrt");
+                outputStream.writeUTF("""
+                        Server calculator
+                        Available operations:
+                        +
+                        -
+                        *
+                        /
+                        sqrt""");
                 outputStream.writeUTF("");
                 outputStream.writeUTF("");
                 outputStream.flush();
@@ -80,22 +86,3 @@ public class Server {
 
     }
 }
-//----------------------------
-//int k = 0;
-////String number1, number2, operation;
-////        do {
-////                if (k > 0) {
-////System.out.println("Please, write correct data!!!");
-////            }
-////                    System.out.println("Write first number: ");
-////number1 = scanner.nextLine();
-////            System.out.println("Write operation: ");
-////operation = scanner.nextLine();
-////            if (!operation.equals("sqrt")) {
-////System.out.println("Write second number: ");
-////number2 = scanner.nextLine();
-////            } else {
-////number2 = "0";
-//}
-//k++;
-//} while (checkInputInfo(number1, number2, operation));
