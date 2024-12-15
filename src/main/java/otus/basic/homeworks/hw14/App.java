@@ -45,6 +45,10 @@ public class App {
                 arr[i] = 1.14 * Math.cos(i) * Math.sin(i * 0.2) * Math.cos(i / 1.2);
             }
         });
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
 
     }
 }
