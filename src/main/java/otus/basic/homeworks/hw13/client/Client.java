@@ -1,4 +1,4 @@
-package otus.basic.homeworks.hw21.client;
+package otus.basic.homeworks.hw13.client;
 
 
 import java.io.*;
@@ -17,19 +17,14 @@ public class Client {
                 outputStream = new DataOutputStream(socket.getOutputStream());
                 send("start");
                 String number1, number2, operation;
-                System.out.println("Write first number or 'exit' for exit: ");
                 number1 = scanner.nextLine();
                 send(number1);
-                System.out.println("Write operation: ");
                 operation = scanner.nextLine();
                 send(operation);
                 if (!operation.equals("sqrt")) {
-                    System.out.println("Write second number: ");
                     number2 = scanner.nextLine();
-                } else {
-                    number2 = "0";
+                    send(number2);
                 }
-                send(number2);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

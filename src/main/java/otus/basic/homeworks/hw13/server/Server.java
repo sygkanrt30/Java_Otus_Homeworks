@@ -1,32 +1,24 @@
-package otus.basic.homeworks.hw21.server;
+package otus.basic.homeworks.hw13.server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Server {
 
-    private static final ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
-    private static final HashSet<String> operations = new HashSet<>();
+    private static final HashSet<String> operations = new HashSet<>(Set.of("+", "sqrt", "/", "*", "-"));
 
     public static void main(String[] args) throws IOException {
-        operations.add("+");
-        operations.add("-");
-        operations.add("*");
-        operations.add("/");
-        operations.add("sqrt");
         ServerSocket socket = new ServerSocket(8080);
         System.out.println("SERVER APPLICATION RUN!");
         while (true) {
             Socket client = socket.accept();
             DataInputStream inputStream = new DataInputStream(client.getInputStream());
             DataOutputStream outputStream = new DataOutputStream(client.getOutputStream());
-            ClientHandler clientHandler = new ClientHandler(client, inputStream, outputStream);
-            clientHandlers.add(clientHandler);
             String userInput = inputStream.readUTF();
             if (userInput.equals("start")) {
                 outputStream.writeUTF("""
@@ -36,9 +28,8 @@ public class Server {
                         -
                         *
                         /
-                        sqrt""");
-                outputStream.writeUTF("");
-                outputStream.writeUTF("");
+                        sqrt
+                        Write first number or 'exit' for exit:""");
                 outputStream.flush();
             }
             String number1 = inputStream.readUTF();
@@ -48,10 +39,15 @@ public class Server {
                 continue;
             }
             System.out.println(number1);
+            outputStream.writeUTF("Write operation: ");
             String operation = inputStream.readUTF();
             System.out.println(operation);
-            String number2 = inputStream.readUTF();
-            System.out.println(number2);
+            String number2 = "0";
+            if (!operation.equals("sqrt")) {
+                outputStream.writeUTF("Write second number: ");
+                number2 = inputStream.readUTF();
+                System.out.println(number2);
+            }
             if (!checkInputInfo(number1, number2, operation)) {
                 outputStream.writeUTF("Incorrect input");
             } else {
