@@ -37,6 +37,7 @@ public class Box<T extends Fruit> {
     public void pourOver(Box<? super T> boxWithFruits) {
         for (T t : content) {
             boxWithFruits.addFruit(t);
+            boolean d = content.remove(t);
         }
     }
 
